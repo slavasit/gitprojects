@@ -72,5 +72,16 @@
 
 <!--End collect history-->
 
+<!--Scroll on click function-->
+<script>
+    $('.nav ul li a').click(function() {
+        var rel = $(this).attr('rel');
+        $('html, body').animate({
+            scrollTop: $('#'+rel).offset().top
+        }, 500);
+    });
+
+    });
+</script>
 </body>
 </html>
