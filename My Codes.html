@@ -6,11 +6,69 @@
 </head>
 <body>
 
+<!--Disable Right Click-->
 <script>
-    // Disable Right Click
     document.oncontextmenu = document.body.oncontextmenu = function() {return false;}
 </script>
+<!--add jQuary script-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
+<!--parallax-->
+    <script>$('.sal').parallax({imageSrc: 'bg.png'});</script>
+    <script>
+        $('.parallax-mirror').append('<div id="cover"></div>');
+    </script>
+<!--Collect & Save history-->
+        <div id="section1" style="color:brown;" class="steps">Hi. this is section1.<br> <input type="button" class="previous" value="previous"> <input type="button" class="next" value="next"></div>
+        <div id="section2" style="color:darkgreen;" class="steps">Hi. this is section2.<br> <input type="button" class="previous" value="previous"> <input type="button" class="next" value="next"></div>
+        <div id="section3" style="color:darkmagenta;" class="steps">Hi. this is section3.<br> <input type="button" class="previous" value="previous"> <input type="button" class="next" value="next"></div>
+        <div id="section4" style="color:darkorange;" class="steps">Hi. this is section4.<br> <input type="button" class="previous" value="previous"> <input type="button" class="next" value="next"></div>
+    <script>
+        //collect steps
+        var current = 1;
+        steps = $(".steps").length;
+        //push 0 to history
+        history.pushState({ page:0 }, null);
+
+        window.onpopstate = function (event) {
+
+        if(current <= 0) {
+        $( ".next" ).trigger('click', true);
+        }
+        //check if visible button clicked
+        if(current > event.state.page) {
+        $(".previous:visible").click();
+        }
+        if(current < event.state.page) {//Next
+        $(".next:visible").trigger('click', true);
+        }
+        };
+
+        $(".next").click(function(event, isTrigger){
+
+
+        current++;
+        // push to history the current page on click next button
+        if(isTrigger != true) history.pushState({page:current},null);
+        current_step = $(this).parent();
+        next_step = $(this).parent().parent();
+        next_step.show();
+        current_step.hide();
+        return false
+
+        });
+
+        $(".previous").click(function(){
+        current--;
+        if(current == 0) {
+        }
+        current_step = $(this).parent().parent();
+        next_step = $(this).parent().parent().prev();
+        next_step.show();
+        current_step.hide();
+        });
+    </script>
+<!--End collect history-->
 
 </body>
 </html>
