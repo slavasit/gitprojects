@@ -102,7 +102,7 @@
     });
 
 </script>
-
+<!--Higher-order functions-->
 <script>
 
 //     map functions
@@ -119,6 +119,69 @@ var animals = [
 var names = animals.map((x) => x.name)
 console.log(names);
 
+
+//    filter functions
+
+var animals = [
+    { name: 'Fluffykins', species: 'rabbit' },
+    { name: 'Caro',       species: 'dog' },
+    { name: 'Hamilton',   species: 'dog' },
+    { name: 'Harold',     species: 'fish' },
+    { name: 'Ursula',     species: 'cat' },
+    { name: 'Jimmy',      species: 'fish' }
+];
+var isDog = function(animal){
+    return animal.species === 'dog'
+}
+
+    var dogs = animals.filter(isDog);
+    var otherAnimals = animals.reject(isDog);
+
+
 </script>
+
+
+<!--Responsive full screen background-->
+<style>
+html, body{
+height: 100%;
+}
+body {
+background-image: url(http://ppcdn.500px.org/75319705/1991f76c0c6a91ae1d23eb94ac5c7a9f7e79c480/2048.jpg) ;
+background-position: center center;
+background-repeat:  no-repeat;
+background-attachment: fixed;
+background-size:  cover;
+background-color: #999;
+
+}
+</style>
+<!--end Responsive full screen background-->
+
+<!--line breaking-->
+<style>
+.pretext
+{
+font-weight:bold;
+display:inline-block;
+vertical-align:top;
+}
+
+.text
+{
+width:300px;
+display:inline-block;
+}
+
+</style>
+
+
 </body>
 </html>
+
+
+
+
+<!--wordpress-->
+
+speed optimization plugin: above the fold optimization
